@@ -78,7 +78,7 @@ def build_student(local_path: str) -> CustomDistilBertForSequenceClassification:
     # Seed each shared layer from a SINGLE teacher layer (1, 3, 5) rather than
     # averaging pairs — averaging two distinct attention patterns destroys both.
     # Using the deeper layer of each pair tends to transfer better.
-    source_layers = [1, 3, 5]
+    source_layers = [0, 2, 4]
     for s_idx, t_idx in enumerate(source_layers):
         student.distilbert.transformer.layer[s_idx].shared_layer.load_state_dict(
             teacher_layers[t_idx].state_dict()
