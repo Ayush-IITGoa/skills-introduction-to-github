@@ -78,3 +78,8 @@ cos_sim = F.cosine_similarity(
 ).mean()
 
 print("Cosine similarity:", cos_sim.item())
+
+print(type(student_outputs.last_hidden_state))
+print(len(student_outputs.last_hidden_state))
+print(type(student_outputs.last_hidden_state[0]))
+print(student_outputs.last_hidden_state[0].shape)
