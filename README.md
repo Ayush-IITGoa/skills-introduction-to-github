@@ -62,24 +62,14 @@ Get help: [Post in our discussion board](https://github.com/orgs/skills/discussi
 &copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
 
 </footer>
-import torch.nn.functional as F
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
-teacher_hidden = teacher_outputs.last_hidden_state
-
-if isinstance(student_outputs.last_hidden_state, tuple):
-    student_hidden = student_outputs.last_hidden_state[0]
-else:
-    student_hidden = student_outputs.last_hidden_state
-
-cos_sim = F.cosine_similarity(
-    teacher_hidden.reshape(-1, teacher_hidden.size(-1)),
-    student_hidden.reshape(-1, student_hidden.size(-1)),
-    dim=-1
-).mean()
-
-print("Cosine similarity:", cos_sim.item())
-
-print(type(student_outputs.last_hidden_state))
-print(len(student_outputs.last_hidden_state))
-print(type(student_outputs.last_hidden_state[0]))
-print(student_outputs.last_hidden_state[0].shape)
+pip install transformers==4.46.3
+pip install numpy==1.26.4
+pip install tensorflow
+torch==2.6.0+cu124
+transformers==4.46.3
+tokenizers
+safetensors
+numpy<2
+tensorflow
